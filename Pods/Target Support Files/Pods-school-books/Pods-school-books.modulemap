@@ -1,0 +1,6 @@
+framework module Pods_school_books {
+  umbrella header "Pods-school-books-umbrella.h"
+
+  export *
+  module * { export * }
+}
