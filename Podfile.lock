@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.8.0)
   - Realm (3.12.0):
     - Realm/Headers (= 3.12.0)
   - Realm/Headers (3.12.0)
@@ -9,20 +10,23 @@ PODS:
     - Siesta/Core
 
 DEPENDENCIES:
+  - Alamofire
   - RealmSwift
   - Siesta/UI
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Realm
     - RealmSwift
     - Siesta
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
   RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
 
-PODFILE CHECKSUM: ed11788f364eec10507f4687f3f8262c70cf1ac7
+PODFILE CHECKSUM: a223acdf68dd969e016096adc8678aab83f458fd
 
 COCOAPODS: 1.5.3

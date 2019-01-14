@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		26FC75D93AF7B37B909BE19B /* Pods_school_books.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F4F16113E5B7A3ED62B811 /* Pods_school_books.framework */; };
+		6311EB5121ECC51C0026F82D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311EB5021ECC51C0026F82D /* User.swift */; };
+		6311EB5821ECEAB20026F82D /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311EB5721ECEAB20026F82D /* Switcher.swift */; };
+		6323599A21ED330D00EB8224 /* TabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323599921ED330D00EB8224 /* TabVC.swift */; };
 		632C716F21EA4A8E00407FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C716E21EA4A8E00407FDD /* AppDelegate.swift */; };
-		632C717121EA4A8E00407FDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C717021EA4A8E00407FDD /* ViewController.swift */; };
+		632C717121EA4A8E00407FDD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C717021EA4A8E00407FDD /* LoginVC.swift */; };
 		632C717421EA4A8E00407FDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C717221EA4A8E00407FDD /* Main.storyboard */; };
-		632C717621EA4A9100407FDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632C717521EA4A9100407FDD /* Assets.xcassets */; };
 		632C717921EA4A9100407FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C717721EA4A9100407FDD /* LaunchScreen.storyboard */; };
 		632C718421EA4A9100407FDD /* school_booksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C718321EA4A9100407FDD /* school_booksTests.swift */; };
 		632C718F21EA4A9100407FDD /* school_booksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C718E21EA4A9100407FDD /* school_booksUITests.swift */; };
+		633D243421ED3CE10055952E /* Assest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633D243321ED3CE10055952E /* Assest.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +39,13 @@
 
 /* Begin PBXFileReference section */
 		55F4F16113E5B7A3ED62B811 /* Pods_school_books.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_school_books.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6311EB5021ECC51C0026F82D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6311EB5721ECEAB20026F82D /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
+		6323599921ED330D00EB8224 /* TabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabVC.swift; sourceTree = "<group>"; };
 		632C716B21EA4A8E00407FDD /* school-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "school-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C716E21EA4A8E00407FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		632C717021EA4A8E00407FDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		632C717021EA4A8E00407FDD /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		632C717321EA4A8E00407FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		632C717521EA4A9100407FDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		632C717821EA4A9100407FDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		632C717A21EA4A9100407FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		632C717F21EA4A9100407FDD /* school-booksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "school-booksTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +54,7 @@
 		632C718A21EA4A9100407FDD /* school-booksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "school-booksUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C718E21EA4A9100407FDD /* school_booksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = school_booksUITests.swift; sourceTree = "<group>"; };
 		632C719021EA4A9100407FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633D243321ED3CE10055952E /* Assest.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assest.xcassets; sourceTree = "<group>"; };
 		C4C5158CC074470AE68D817D /* Pods-school-books.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-school-books.release.xcconfig"; path = "Pods/Target Support Files/Pods-school-books/Pods-school-books.release.xcconfig"; sourceTree = "<group>"; };
 		FBAB0B96AB4193E14E7733D2 /* Pods-school-books.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-school-books.debug.xcconfig"; path = "Pods/Target Support Files/Pods-school-books/Pods-school-books.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +94,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6311EB4F21ECC4FD0026F82D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6311EB5021ECC51C0026F82D /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6323599821ED2EB800EB8224 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				632C717021EA4A8E00407FDD /* LoginVC.swift */,
+				6323599921ED330D00EB8224 /* TabVC.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		632C716221EA4A8E00407FDD = {
 			isa = PBXGroup;
 			children = (
@@ -113,12 +136,14 @@
 		632C716D21EA4A8E00407FDD /* school-books */ = {
 			isa = PBXGroup;
 			children = (
+				6323599821ED2EB800EB8224 /* UI */,
+				6311EB4F21ECC4FD0026F82D /* Model */,
 				632C716E21EA4A8E00407FDD /* AppDelegate.swift */,
-				632C717021EA4A8E00407FDD /* ViewController.swift */,
 				632C717221EA4A8E00407FDD /* Main.storyboard */,
-				632C717521EA4A9100407FDD /* Assets.xcassets */,
 				632C717721EA4A9100407FDD /* LaunchScreen.storyboard */,
 				632C717A21EA4A9100407FDD /* Info.plist */,
+				6311EB5721ECEAB20026F82D /* Switcher.swift */,
+				633D243321ED3CE10055952E /* Assest.xcassets */,
 			);
 			path = "school-books";
 			sourceTree = "<group>";
@@ -255,8 +280,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633D243421ED3CE10055952E /* Assest.xcassets in Resources */,
 				632C717921EA4A9100407FDD /* LaunchScreen.storyboard in Resources */,
-				632C717621EA4A9100407FDD /* Assets.xcassets in Resources */,
 				632C717421EA4A8E00407FDD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +312,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-school-books/Pods-school-books-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
@@ -295,6 +321,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
@@ -333,8 +360,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632C717121EA4A8E00407FDD /* ViewController.swift in Sources */,
+				6323599A21ED330D00EB8224 /* TabVC.swift in Sources */,
+				6311EB5821ECEAB20026F82D /* Switcher.swift in Sources */,
+				632C717121EA4A8E00407FDD /* LoginVC.swift in Sources */,
 				632C716F21EA4A8E00407FDD /* AppDelegate.swift in Sources */,
+				6311EB5121ECC51C0026F82D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

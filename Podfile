@@ -5,5 +5,6 @@ target 'school-books' do
 	
   pod 'RealmSwift'
   pod 'Siesta/UI'
+  pod 'Alamofire'
 end
 
