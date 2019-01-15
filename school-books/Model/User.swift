@@ -1,8 +1,8 @@
 struct User: Codable{
-    let _id: String
-    let username: String
-    let token: String
-    let books: [String]
+    var _id: String
+    var username: String
+    var token: String
+    var books: [String]
     
     enum CodingKeys: String, CodingKey{
         case _id

@@ -12,10 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var bookViewModel = BookViewModel()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Switcher.updateRootVC()
+        if (AuthenticationController.getToken() == nil || AuthenticationController.getToken() == "") {
+            let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "start") as! UINavigationController
+            self.window?.rootViewController = loginViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            bookViewModel.getBooks()
+        }
+        
         return true
     }
 
