@@ -1,28 +1,43 @@
 PODS:
-  - Realm (3.12.0):
-    - Realm/Headers (= 3.12.0)
-  - Realm/Headers (3.12.0)
-  - RealmSwift (3.12.0):
-    - Realm (= 3.12.0)
-  - Siesta/Core (1.4.2)
-  - Siesta/UI (1.4.2):
-    - Siesta/Core
+  - Alamofire (5.0.0.beta.1)
+  - KeychainSwift (13.0.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
-  - RealmSwift
-  - Siesta/UI
+  - Alamofire (~> 5.0.0.beta.1)
+  - KeychainSwift (~> 13.0)
+  - RealmSwift (~> 3.13)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - KeychainSwift
     - Realm
     - RealmSwift
-    - Siesta
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
 
 SPEC CHECKSUMS:
-  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
-  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
-  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: ed11788f364eec10507f4687f3f8262c70cf1ac7
+PODFILE CHECKSUM: d19241e960a36893f58048721d46384ae1a5091a
 
 COCOAPODS: 1.5.3
