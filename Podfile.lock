@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - CropViewController (2.4.0)
   - KeychainSwift (13.0.0)
+  - Nuke (7.5.2)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
   - Realm/Headers (3.13.1)
@@ -14,7 +16,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - CropViewController
   - KeychainSwift (~> 13.0)
+  - Nuke (~> 7.0)
   - RealmSwift (~> 3.13)
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
@@ -22,7 +26,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CropViewController
     - KeychainSwift
+    - Nuke
     - Realm
     - RealmSwift
     - RxAtomic
@@ -31,13 +37,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: d19241e960a36893f58048721d46384ae1a5091a
+PODFILE CHECKSUM: 31083fb618878b4de78f660769bc463d20992dee
 
 COCOAPODS: 1.5.3

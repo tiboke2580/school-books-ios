@@ -83,4 +83,9 @@ class BookRealmDb {
         return realm.objects(RealmBook.self)
     }
     
+    public func getOwnBooks(by userId: String) -> Results<RealmBook> {
+        let predicate = NSPredicate(format: "user_id = %@", userId)
+        return realm.objects(RealmBook.self).filter(predicate)
+    }
+    
 }

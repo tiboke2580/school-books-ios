@@ -16,6 +16,14 @@ struct Constants {
         static let username = "username"
 
     }
+    
+    struct APIBookParameterKey{
+        static let title = "title"
+        static let description = "description"
+        static let contact = "contact"
+        static let price = "price"
+        static let file = "image"
+    }
 }
 
 enum HTTPHeaderField: String {

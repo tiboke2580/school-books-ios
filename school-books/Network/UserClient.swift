@@ -23,14 +23,43 @@ class UserClient {
         return request(UserRouterApi.books)
     }
     
+    static func addBook(title:String, description:String, contact:String, price:String, file:UIImage){
+        
+        var imageToUpload = file
+        
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        if let dirPath          = paths.first
+        {
+            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("Image2.png") //Your image name here
+            let image    = UIImage(contentsOfFile: imageURL.path)
+            imageToUpload = image!
+        }
+        
+        
+        
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(imageToUpload.jpegData(compressionQuality: 0)!, withName: "Prescription", fileName: "Profile_Image.jpeg", mimeType: "image/jpeg")
+        }, to:"http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/uploads")
+        
+    }
+    
+    
+    
+    
     private static func request<T: Codable> (_ urlConvertible: URLRequestConvertible) -> Observable<T> {
         let jsonDecoder = JSONDecoder()
         return Observable<T>.create { observer in
             let request = AF.request(urlConvertible).responseDecodable (decoder: jsonDecoder) { (response: DataResponse<T>) in
                 switch response.result {
                 case .success(let value):
-                    observer.onNext(value)
-                    observer.onCompleted()
+                    if(response.response?.statusCode != 400 && response.response?.statusCode != 401)
+                    {
+                        observer.onNext(value)
+                        observer.onCompleted()
+                    }
+                    
                 case .failure(let error):
                     switch response.response?.statusCode {
                     case 401:

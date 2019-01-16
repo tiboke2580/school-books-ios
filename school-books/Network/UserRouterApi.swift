@@ -13,6 +13,7 @@ enum UserRouterApi: URLRequestConvertible {
     
     case login(username:String, password:String)
     case register(username:String, password: String)
+    case addBook(title:String, description:String, contact:String, price:String, file:UIImage)
     case books
     
     private var method: HTTPMethod {
@@ -20,6 +21,8 @@ enum UserRouterApi: URLRequestConvertible {
         case .login:
             return .post
         case .register:
+            return .post
+        case .addBook:
             return .post
         case .books:
             return .get
@@ -34,6 +37,8 @@ enum UserRouterApi: URLRequestConvertible {
             return "/API/users/register"
         case .books:
             return "/API/book/books"
+        case .addBook:
+            return "/API/book/books"
         }
     }
     
@@ -45,14 +50,16 @@ enum UserRouterApi: URLRequestConvertible {
             return [Constants.APIParameterKey.username: username, Constants.APIParameterKey.password: password]
         case .books:
             return nil
+        case .addBook(let title, let description, let contact, let price, let file):
+            return [Constants.APIBookParameterKey.title: title, Constants.APIBookParameterKey.description: description, Constants.APIBookParameterKey.contact: contact, Constants.APIBookParameterKey.price: price, Constants.APIBookParameterKey.file: file]
         }
+        
     }
     
     func asURLRequest() throws -> URLRequest {
         let url = try Constants.baseURL.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        print(urlRequest)
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
