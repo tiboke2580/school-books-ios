@@ -467,6 +467,7 @@
                         <outlet property="contact" destination="pVk-Pk-3Fl" id="h5r-fN-g7x"/>
                         <outlet property="image" destination="hcI-3t-HDy" id="MlW-KO-aAC"/>
                         <outlet property="price" destination="pZs-t6-aJY" id="cD9-Lb-Chj"/>
+                        <segue destination="JkA-Gn-EwQ" kind="show" identifier="addBookSegue" id="93m-Zv-Jaa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RW4-ri-9WP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -485,6 +486,7 @@
         <image name="placeholder" width="800" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="93m-Zv-Jaa"/>
         <segue reference="YMQ-KW-pl3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -23,25 +23,40 @@ class UserClient {
         return request(UserRouterApi.books)
     }
     
-    static func addBook(title:String, description:String, contact:String, price:String, file:UIImage){
-        
-        var imageToUpload = file
-        
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        if let dirPath          = paths.first
-        {
-            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("Image2.png") //Your image name here
-            let image    = UIImage(contentsOfFile: imageURL.path)
-            imageToUpload = image!
+    static func addBook(bookTitle: String, bookDescription:String, bookContact: String, bookPrice:String, userId:String ,file:UIImage){
+
+        let parameters = [Constants.APIBookParameterKey.title: bookTitle, Constants.APIBookParameterKey.description: bookDescription, Constants.APIBookParameterKey.contact: bookContact, Constants.APIBookParameterKey.price: bookPrice, Constants.APIBookParameterKey.user_id: userId]
+        print(Constants.APIBookParameterKey.user_id)
+        print(Constants.APIBookParameterKey.title)
+        do {
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            print(documentsURL)
+            let fileName = "filename"
+            let fileURL = documentsURL.appendingPathComponent("\(fileName).jpg")
+            print(fileURL)
+            if let pngImageData = file.jpegData(compressionQuality: 0) {
+                print(pngImageData)
+                try pngImageData.write(to: fileURL, options: .atomic)
+                if FileManager.default.fileExists(atPath: fileURL.path) {
+                    AF.upload(
+                        multipartFormData: { multipartFormData in
+                            multipartFormData.append(fileURL, withName: "file")
+                            for (key, value) in parameters {
+                                multipartFormData.append(value.data(using: .utf8)!, withName: key)
+                            }
+                    },
+                        to: "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/book/book"
+                    )
+                }
+
+            }
+        } catch {
+            print("fail")
         }
         
         
         
-        AF.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageToUpload.jpegData(compressionQuality: 0)!, withName: "Prescription", fileName: "Profile_Image.jpeg", mimeType: "image/jpeg")
-        }, to:"http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/uploads")
+        
         
     }
     

@@ -23,6 +23,7 @@ struct Constants {
         static let contact = "contact"
         static let price = "price"
         static let file = "image"
+        static let user_id = "user_id"
     }
 }
 
