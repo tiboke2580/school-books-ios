@@ -13,6 +13,7 @@ enum UserRouterApi: URLRequestConvertible {
     
     case login(username:String, password:String)
     case register(username:String, password: String)
+    case delete(id:String)
     case books
     
     private var method: HTTPMethod {
@@ -23,6 +24,8 @@ enum UserRouterApi: URLRequestConvertible {
             return .post
         case .books:
             return .get
+        case .delete:
+            return .delete
         }
     }
     
@@ -34,6 +37,8 @@ enum UserRouterApi: URLRequestConvertible {
             return "/API/users/register"
         case .books:
             return "/API/book/books"
+        case .delete(let id):
+            return "/API/book/deleteBook/\(id)"
         }
     }
     
@@ -44,6 +49,8 @@ enum UserRouterApi: URLRequestConvertible {
         case .register(let username, let password):
             return [Constants.APIParameterKey.username: username, Constants.APIParameterKey.password: password]
         case .books:
+            return nil
+        case .delete:
             return nil
         }
         

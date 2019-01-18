@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.navigationItem.hidesBackButton = true;
     }
 
 
@@ -56,9 +57,6 @@ class LoginViewController: UIViewController {
         }
         }
     
-    @IBAction func dismissKeyboard(_ sender: Any) {
-        view.endEditing(true)
-    }
 }
 
 

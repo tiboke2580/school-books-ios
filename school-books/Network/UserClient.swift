@@ -23,33 +23,40 @@ class UserClient {
         return request(UserRouterApi.books)
     }
     
+    static func deleteBook(id: String) -> Observable<Book>{
+        return request(UserRouterApi.delete(id: id))
+    }
+    
     static func addBook(bookTitle: String, bookDescription:String, bookContact: String, bookPrice:String, userId:String ,file:UIImage){
 
         let parameters = [Constants.APIBookParameterKey.title: bookTitle, Constants.APIBookParameterKey.description: bookDescription, Constants.APIBookParameterKey.contact: bookContact, Constants.APIBookParameterKey.price: bookPrice, Constants.APIBookParameterKey.user_id: userId]
-        print(Constants.APIBookParameterKey.user_id)
-        print(Constants.APIBookParameterKey.title)
+
+        //source https://stackoverflow.com/questions/26171901/swift-write-image-from-url-to-local-file
         do {
+            
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            print(documentsURL)
             let fileName = "filename"
             let fileURL = documentsURL.appendingPathComponent("\(fileName).jpg")
-            print(fileURL)
-            if let pngImageData = file.jpegData(compressionQuality: 0) {
-                print(pngImageData)
-                try pngImageData.write(to: fileURL, options: .atomic)
-                if FileManager.default.fileExists(atPath: fileURL.path) {
-                    AF.upload(
-                        multipartFormData: { multipartFormData in
-                            multipartFormData.append(fileURL, withName: "file")
-                            for (key, value) in parameters {
-                                multipartFormData.append(value.data(using: .utf8)!, withName: key)
-                            }
-                    },
-                        to: "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/book/book"
-                    )
-                }
 
+            if let pngImageData = file.jpegData(compressionQuality: 0) {
+   
+                try pngImageData.write(to: fileURL, options: .atomic)
+                
+                if FileManager.default.fileExists(atPath: fileURL.path) {
+                        AF.upload(
+                            multipartFormData: { multipartFormData in
+                                multipartFormData.append(fileURL, withName: "file")
+                                for (key, value) in parameters {
+                                    multipartFormData.append(value.data(using: .utf8)!, withName: key)
+                                }
+                        },
+                            to: "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/book/book"
+
+                        )
+                    
+                }
             }
+            
         } catch {
             print("fail")
         }

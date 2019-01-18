@@ -35,4 +35,5 @@ class BookViewModel {
             })
             .disposed(by: disposeBag)
     }
+    
 }

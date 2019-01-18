@@ -15,14 +15,14 @@ class TabBarController: UIViewController {
     
     private let SERVER_IMG_URL = "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/file/file?file_name="
     private let localDB = BookRealmDb()
-    private lazy var books: Results<RealmBook> = {
-        localDB.getAllBooks()
-    }()
+    private var books: Results<RealmBook>!
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true;
+        books = localDB.getAllBooks()
     }
     
     @IBAction func ownBookList(_ sender: Any) {

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CropViewController
+import Realm
 
 class AddBookController : UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate{
     
@@ -23,6 +24,7 @@ class AddBookController : UITableViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.navigationItem.hidesBackButton = true;
     }
     
     @IBAction func tappedImage(_ sender: UIView) {
@@ -69,25 +71,31 @@ class AddBookController : UITableViewController, UIImagePickerControllerDelegate
     @IBAction func addBook(_ sender: Any) {
         view.endEditing(true)
         
-        guard let bookTitle = bookTitle.text, bookTitle.count > 0 else {
+        guard let bookTitle = bookTitle.text, bookTitle != "" else {
             return
         }
-        guard let bookDescription = bookDescription.text, bookDescription.count > 0 else {
+        guard let bookDescription = bookDescription.text, bookDescription != "" else {
             return
         }
         
-        guard let contact = contact.text, contact.count > 0 else {
+        guard let contact = contact.text, contact != "" else {
             return
         }
-        guard let price = price.text, price.count > 0 else {
+        guard let price = price.text, price != "" else {
             return
         }
+        
+        
         
         UserClient.addBook(bookTitle: bookTitle, bookDescription: bookDescription, bookContact: contact, bookPrice: price, userId: AuthenticationController.getUserId()! ,file: image.image!)
+    
         
         self.performSegue(withIdentifier: "addBookSegue", sender: self)
+        
 
     }
+    
+
     
         
 }

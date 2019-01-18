@@ -60,6 +60,7 @@ class BookRealmDb {
     func saveBook(book: RealmBook) {
         try! realm.write {
             realm.add(book)
+            realm.refresh()
         }
     }
     func updateBook(book: RealmBook) {
@@ -70,6 +71,7 @@ class BookRealmDb {
     func deleteBook(book: RealmBook) {
         try! realm.write {
             realm.delete(book)
+            realm.refresh()
         }
     }
     
