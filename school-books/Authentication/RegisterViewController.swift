@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var username: UITextField!
@@ -17,11 +17,31 @@ class RegisterViewController: UIViewController {
     private let localDB = BookRealmDb()
     private let disposeBag = DisposeBag()
     
+        @IBOutlet weak var lblValidation: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.navigationItem.hidesBackButton = true;
+        lblValidation.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField == username){
+            password.becomeFirstResponder()
+        }else if(textField == password){
+            passwordRepeat.becomeFirstResponder()
+        }else{
+            passwordRepeat.resignFirstResponder()
+        }
         
+        return true
+    }
+    
+    func validation(_ text: String)
+    {
+        lblValidation.text = text
+        lblValidation.isHidden = false
     }
     
 
@@ -30,12 +50,15 @@ class RegisterViewController: UIViewController {
         view.endEditing(true)
         
         guard let username = username.text, username.count > 0 else {
+            validation("Gebruikersnaam moet ingevuld zijn")
             return
         }
         guard let password = password.text, password.count > 0 else {
+            validation("Wachtwoord moet ingevuld zijn")
             return
         }
         guard let passwordRepeat = passwordRepeat.text, passwordRepeat.count > 0 else {
+            validation("Herhaal wachtwoord moet ingevuld zijn")
             return
         }
         
@@ -57,6 +80,8 @@ class RegisterViewController: UIViewController {
                     }
                 }, onError: { error in
                     switch error {
+                    case APIErrorConstants.internalServerError:
+                        self.validation("Gebruikersnaam bestaat al")
                     case APIErrorConstants.unAuthorized:
                         print("401 error")
                     case APIErrorConstants.notFound:
@@ -66,6 +91,8 @@ class RegisterViewController: UIViewController {
                     }
                 })
                 .disposed(by: disposeBag)
+        }else{
+            validation("Wachtwoorden komen niet overeen")
         }
     }
 }

@@ -18,7 +18,7 @@
 		6316E7F921EE2B6C005476DB /* BookRealmDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6316E7F821EE2B6C005476DB /* BookRealmDb.swift */; };
 		6323591621EE390B00CFDFCB /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323591521EE390B00CFDFCB /* RealmModels.swift */; };
 		6323591721EE43D600CFDFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C717221EA4A8E00407FDD /* Main.storyboard */; };
-		6323599A21ED330D00EB8224 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323599921ED330D00EB8224 /* TabBarController.swift */; };
+		6323599A21ED330D00EB8224 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323599921ED330D00EB8224 /* BookViewController.swift */; };
 		632C716F21EA4A8E00407FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C716E21EA4A8E00407FDD /* AppDelegate.swift */; };
 		632C717121EA4A8E00407FDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C717021EA4A8E00407FDD /* LoginViewController.swift */; };
 		632C717921EA4A9100407FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C717721EA4A9100407FDD /* LaunchScreen.storyboard */; };
@@ -61,7 +61,7 @@
 		6316E7F521EE29A4005476DB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		6316E7F821EE2B6C005476DB /* BookRealmDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRealmDb.swift; sourceTree = "<group>"; };
 		6323591521EE390B00CFDFCB /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
-		6323599921ED330D00EB8224 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		6323599921ED330D00EB8224 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		632C716B21EA4A8E00407FDD /* school-books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "school-books.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C716E21EA4A8E00407FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C717021EA4A8E00407FDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				6316E7E821EE2748005476DB /* Model.swift */,
-				6323591521EE390B00CFDFCB /* RealmModels.swift */,
+				6316E7F521EE29A4005476DB /* BookViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +142,7 @@
 		6316E7EA21EE2806005476DB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6316E7F221EE2962005476DB /* Constants.swift */,
 				6316E7EB21EE2821005476DB /* UserClient.swift */,
 				6316E7ED21EE28C5005476DB /* UserRouterApi.swift */,
 				6316E7EF21EE2940005476DB /* APIErrorConstants.swift */,
@@ -149,30 +150,22 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		6316E7F121EE2950005476DB /* Utils */ = {
+		6316E7F421EE2991005476DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6316E7F221EE2962005476DB /* Constants.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		6316E7F421EE2991005476DB /* Book */ = {
-			isa = PBXGroup;
-			children = (
-				6316E7F521EE29A4005476DB /* BookViewModel.swift */,
-				6323599921ED330D00EB8224 /* TabBarController.swift */,
+				636B125821EF6E6B00EA201D /* OwnBookViewCell.swift */,
 				63EFBFE021EE8FFC001C83FF /* BookViewCell.swift */,
 			);
-			path = Book;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		6316E7F721EE2B4A005476DB /* Persistence */ = {
+		6316E7F721EE2B4A005476DB /* Realm */ = {
 			isa = PBXGroup;
 			children = (
 				6316E7F821EE2B6C005476DB /* BookRealmDb.swift */,
+				6323591521EE390B00CFDFCB /* RealmModels.swift */,
 			);
-			path = Persistence;
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		632C716221EA4A8E00407FDD = {
@@ -200,10 +193,9 @@
 		632C716D21EA4A8E00407FDD /* school-books */ = {
 			isa = PBXGroup;
 			children = (
-				636B125721EF6E4C00EA201D /* OwnBooks */,
-				6316E7F721EE2B4A005476DB /* Persistence */,
-				6316E7F421EE2991005476DB /* Book */,
-				6316E7F121EE2950005476DB /* Utils */,
+				636B125721EF6E4C00EA201D /* Controllers */,
+				6316E7F721EE2B4A005476DB /* Realm */,
+				6316E7F421EE2991005476DB /* Views */,
 				6316E7EA21EE2806005476DB /* Network */,
 				6316E7E521EE26FB005476DB /* Authentication */,
 				6311EB4F21ECC4FD0026F82D /* Model */,
@@ -212,7 +204,6 @@
 				632C717721EA4A9100407FDD /* LaunchScreen.storyboard */,
 				632C717A21EA4A9100407FDD /* Info.plist */,
 				633D243521ED40E90055952E /* Assets.xcassets */,
-				636B126121F210D700EA201D /* UiTabBarController.swift */,
 			);
 			path = "school-books";
 			sourceTree = "<group>";
@@ -235,14 +226,15 @@
 			path = "school-booksUITests";
 			sourceTree = "<group>";
 		};
-		636B125721EF6E4C00EA201D /* OwnBooks */ = {
+		636B125721EF6E4C00EA201D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				636B125D21EF8E3100EA201D /* AddBookController.swift */,
 				636B125521EF61E600EA201D /* OwnBookListController.swift */,
-				636B125821EF6E6B00EA201D /* OwnBookViewCell.swift */,
+				6323599921ED330D00EB8224 /* BookViewController.swift */,
+				636B126121F210D700EA201D /* UiTabBarController.swift */,
 			);
-			path = OwnBooks;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7374E155D870D48913D06A91 /* Frameworks */ = {
@@ -456,7 +448,7 @@
 				6316E7EC21EE2821005476DB /* UserClient.swift in Sources */,
 				636B126221F210D700EA201D /* UiTabBarController.swift in Sources */,
 				6316E7F621EE29A4005476DB /* BookViewModel.swift in Sources */,
-				6323599A21ED330D00EB8224 /* TabBarController.swift in Sources */,
+				6323599A21ED330D00EB8224 /* BookViewController.swift in Sources */,
 				6316E7E921EE2748005476DB /* Model.swift in Sources */,
 				632C717121EA4A8E00407FDD /* LoginViewController.swift in Sources */,
 				6323591621EE390B00CFDFCB /* RealmModels.swift in Sources */,

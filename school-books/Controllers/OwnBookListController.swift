@@ -11,7 +11,7 @@ import RxSwift
 import RealmSwift
 import Nuke
 
-class OwnBookListController: UIViewController{
+class OwnBookListController: UITableViewController{
     
     private let SERVER_IMG_URL = "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/file/file?file_name="
     private let localDB = BookRealmDb()
@@ -26,22 +26,21 @@ class OwnBookListController: UIViewController{
         self.books = localDB.getOwnBooks(by: AuthenticationController.getUserId()!)
     }
 
+    override func viewWillAppear(_ animated: Bool){
+        let realm: Realm = try! Realm()
+        realm.refresh()
+        self.tableView.reloadData()
+    }
     
-        
-
-}
-
-extension OwnBookListController : UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return books.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ownBookViewCell", for: indexPath) as! OwnBookViewCell
         let book = books[indexPath.row]
         cell.book = book
@@ -52,25 +51,22 @@ extension OwnBookListController : UITableViewDataSource {
         cell.price.text = book.price
         let url = URL(string: SERVER_IMG_URL + book.image_filename!)
         Nuke.loadImage(with: url!, options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)), into: cell.bookImage)
-
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             let book = books[indexPath.row]
             UserClient.deleteBook(id: book._id!)
                 .observeOn(MainScheduler.instance)
                 .subscribe( onNext: { result in
                     self.localDB.deleteBook(book: book)
-                    self.bookViewModel.getBooks()
-                    let realm: Realm = try! Realm()
-                    realm.refresh()
-                    self.books = self.localDB.getOwnBooks(by: AuthenticationController.getUserId()!)
+                    self.tableView.reloadData()
                 }, onError: {
                     error in
                     switch error {
@@ -82,10 +78,11 @@ extension OwnBookListController : UITableViewDataSource {
                         print("Unknown error:", error)
                     }
                 }
-            ).disposed(by: disposeBag)
+                ).disposed(by: disposeBag)
             
         }
     }
-    
-    
+        
+
 }
+

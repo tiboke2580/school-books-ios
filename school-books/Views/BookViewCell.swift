@@ -22,6 +22,7 @@ class BookViewCell : UITableViewCell {
         didSet {
             bookTitle.text = book.title
             bookDescription.text = book.bookdescription
+            bookDescription.sizeToFit()
             contact.text = book.contact
             price.text = book.price
         }

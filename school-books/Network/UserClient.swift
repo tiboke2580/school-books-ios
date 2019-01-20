@@ -27,44 +27,56 @@ class UserClient {
         return request(UserRouterApi.delete(id: id))
     }
     
-    static func addBook(bookTitle: String, bookDescription:String, bookContact: String, bookPrice:String, userId:String ,file:UIImage){
+    static func addBook(bookTitle: String, bookDescription:String, bookContact: String, bookPrice:String, userId:String ,file:UIImage) -> Observable<Book>{
 
         let parameters = [Constants.APIBookParameterKey.title: bookTitle, Constants.APIBookParameterKey.description: bookDescription, Constants.APIBookParameterKey.contact: bookContact, Constants.APIBookParameterKey.price: bookPrice, Constants.APIBookParameterKey.user_id: userId]
 
         //source https://stackoverflow.com/questions/26171901/swift-write-image-from-url-to-local-file
-        do {
-            
+        
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let fileName = "filename"
             let fileURL = documentsURL.appendingPathComponent("\(fileName).jpg")
 
-            if let pngImageData = file.jpegData(compressionQuality: 0) {
+           let pngImageData = file.jpegData(compressionQuality: 0)
    
-                try pngImageData.write(to: fileURL, options: .atomic)
+        try! pngImageData!.write(to: fileURL, options: .atomic)
                 
-                if FileManager.default.fileExists(atPath: fileURL.path) {
-                        AF.upload(
+                    let jsonDecoder = JSONDecoder()
+                    return Observable<Book>.create { observer in
+                       let request = AF.upload(
                             multipartFormData: { multipartFormData in
                                 multipartFormData.append(fileURL, withName: "file")
                                 for (key, value) in parameters {
                                     multipartFormData.append(value.data(using: .utf8)!, withName: key)
-                                }
-                        },
-                            to: "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/book/book"
-
-                        )
+                                }}, to: "http://projecten3studserver03.westeurope.cloudapp.azure.com:3003/API/book/book")
+                                .responseDecodable (decoder: jsonDecoder) { (response: DataResponse<Book>) in
+                                    switch response.result {
+                                    case .success(let value):
+                                        if(response.response?.statusCode != 400 && response.response?.statusCode != 401)
+                                        {
+                                            observer.onNext(value)
+                                            observer.onCompleted()
+                                        }
+                                        
+                                    case .failure(let error):
+                                        switch response.response?.statusCode {
+                                        case 401:
+                                            observer.onError(APIErrorConstants.unAuthorized)
+                                        case 404:
+                                            observer.onError(APIErrorConstants.notFound)
+                                        case 500:
+                                            observer.onError(APIErrorConstants.internalServerError)
+                                        default:
+                                            observer.onError(error)
+                                        }
+                                    }
+                        }
+                        
+                        return Disposables.create {
+                            request.cancel()
+                        }
+                    }
                     
-                }
-            }
-            
-        } catch {
-            print("fail")
-        }
-        
-        
-        
-        
-        
     }
     
     

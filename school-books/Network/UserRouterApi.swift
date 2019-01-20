@@ -64,7 +64,6 @@ enum UserRouterApi: URLRequestConvertible {
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         // Common Headers
-
         
         // Parameters
         let encoding: ParameterEncoding = {
